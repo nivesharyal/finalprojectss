@@ -43,8 +43,7 @@ public class UserService {
     }
 
     public void userUpdate(User updateModel, int id) throws SQLException {
-        String update = "UPDATE user" +
-                "SET user_name = ?, password = ? , full_name = ?" +
+        String update = "UPDATE user SET userName = ?, password = ? , fullName = ?" +
                 "WHERE id = ?;";
         PreparedStatement preparedStatements = new DBConnection().getStatement(update);
         preparedStatements.setString(1, updateModel.getUserName());
@@ -100,4 +99,26 @@ public class UserService {
         return users;
 
     }
+
+
+    public User getUserRow(int id) {
+        User user = new User();
+        String query = "select * from user where id =?";
+        PreparedStatement preparedStatement = new DBConnection().getStatement(query);
+        try {
+            preparedStatement.setInt(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                user.setId(resultSet.getInt("id"));
+                user.setUserName(resultSet.getString("userName"));
+                user.setFullName(resultSet.getString("fullName"));
+                user.setPassword(resultSet.getString("password"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return user;
+    }
 }
+

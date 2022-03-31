@@ -19,22 +19,23 @@
 <tr>
     <th scope="col">ID</th>
     <th scope="col">userName</th>
-    <th scope="col">password</th>
     <th scope="col">fullName</th>
+    <th scope="col">password</th>
     <th scope="col">action</th>
 </tr>
 </thead>
 <c:forEach items="${arrayList}" var="user">
     <tr>
-    <td> ${user.id}</td>
-    <td>${user.userName}</td>
-    <>{user.fullName}</>
-    <td>${user.password}</td>
-       <td> <a href="user?page=updateUser">EDIT</a></td>
-       <td> <a href="user?page=deleteUser">DELETE</a></td>
+        <td>${user.id}</td>
+        <td>${user.userName}</td>
+        <td>${user.fullName}</td>
+        <td>${user.password}</td>
 
-</tr>
+       <td> <a href="user?page=UserDetails&id=${user.id}">User Details</a></td>
+
+    </tr>
 </c:forEach>
+
 </table>
 
 </body>

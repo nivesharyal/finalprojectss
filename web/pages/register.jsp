@@ -12,7 +12,7 @@
 </head>
 <body>
 <form action="user?page=register" method="POST">
-    UserName <input type="text" name="userName" required=""><br>
+    UserName<input type="text" name="userName" required=""><br>
     FullName<input type="text" name="fullName" required=""><br>
     Password<input type="password" name="password" required=""><br>
     <input type="submit" value="register" required="">
