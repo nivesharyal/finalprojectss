@@ -42,7 +42,7 @@ public class UserService {
         }
     }
 
-    public void userUpdate(User updateModel, int id) throws SQLException {
+    public void updateUser(User updateModel, int id) throws SQLException {
         String update = "UPDATE user SET userName = ?, password = ? , fullName = ?" +
                 "WHERE id = ?;";
         PreparedStatement preparedStatements = new DBConnection().getStatement(update);

@@ -25,6 +25,8 @@ public class UserServlet extends HttpServlet {
             String password = request.getParameter("password");
             password = HashPassword.encode(password);
             user.setPassword(password);
+            //mathiko 2 line ko kaam yeuta tala ko code le nai garxa..
+//         user.setPassword(HashPassword.encode(request.getParameter("password")));
             user.setFullName(request.getParameter("fullName"));
 
             UserService userService = new UserService();
@@ -41,6 +43,7 @@ public class UserServlet extends HttpServlet {
 //            String password = request.getParameter("password");
             String password = request.getParameter("password");
             password = HashPassword.encode(password);
+
             User userService = new UserService().getUser(userName, password);
             if (userService != null) {
                 HttpSession httpSession = request.getSession();
@@ -114,15 +117,15 @@ public class UserServlet extends HttpServlet {
             user.setPassword(HashPassword.encode(request.getParameter("password")));
 
             try {
-                new UserService().userUpdate(user,id);
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
+                new UserService().updateUser(user,id);
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
             List<User> users = null;
             try {
                 users = new UserService().getUserList();
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
             request.setAttribute("arrayList", users);
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("pages/listUser.jsp");

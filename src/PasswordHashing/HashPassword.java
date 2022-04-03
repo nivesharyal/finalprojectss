@@ -6,7 +6,7 @@ import java.security.NoSuchAlgorithmException;
 public class HashPassword {
     public static String encode(String value)
     {
-        String passwordToHash = "password";
+//        String passwordToHash = "password";
         String generatedPassword = null;
 
         try
